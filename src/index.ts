@@ -1,7 +1,12 @@
 import { Elysia } from "elysia";
 
 const app = new Elysia()
-  .get("/", () => "hello")
+  .get("/", ({ set }) => {
+    set.status = 200;
+    set.headers["Content-Type"] = "text/plain";
+
+    return "hi";
+  })
   .get("/id/:id", ({ params: { id } }) => id)
   .post("/", () => "hi")
   .route("M-SEARCH", "/", () => "connect")
