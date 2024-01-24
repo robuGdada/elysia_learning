@@ -8,59 +8,54 @@ const app = new Elysia()
     Layout({
       children: NewComponent({
         children: ` 
-    
-  <div
-    class="flex-col flex bg-gray-900 w-[650px] rounded-lg text-white"
-    hx-get="/todos-data"
-    hx-target="#todo-data"
-    hx-trigger="load"
-  >
-    <div class="flex text-white pt-5 pb-3 gap-5 items-center pl-[1.5rem]">
-      <input
-        class="border border-gray-600 bg-gray-800 p-2 rounded-lg w-[365px] py-2"
-        placeholder="Start Searching Your Todos...."
-        name="search"
-        type="search"
-        hx-post="/search/todos-data"
-        hx-trigger="input changed delay:500ms, search"
-        hx-target="#search-results"
-        hx-indicator="#loading"
-      />
-     
+          <div class="container mx-auto py-8 max-w-lg">
+      <span class="htmx-indicator" id="loading">
+        <img src="img/loader.gif" alt="Loading..." class="m-auto h-10" />
+      </span>
       <div
-        hx-get="/get/todo"
-        hx-swap="outerHTML"
-        hx-target="#todos-container"
-        hx-indicator="#loading"
-        class="bg-green-600 py-2 px-1 rounded-lg cursor-pointer text-[14px] uppercase font-medium"
+        class="bg-gray-900 text-white p-4 border border-gray-600 rounded-lg max-w-lg m-auto"
       >
-        Add new todo
+        <h3 class="text-2xl mb-3 text-center">Search Contacts</h3>
+        <input
+          class="border border-gray-600 bg-gray-800 p-2 rounded-lg w-full mb-5"
+          type="search"
+          name="search"
+          placeholder="Start Searching for Users..."
+          hx-post="/search"
+          hx-trigger="input changed delay:500ms, search"
+          hx-target="#search-results"
+          hx-indicator="#loading"
+        />
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-800 text-white">
+            <tr>
+              <th
+                scope="col"
+                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider"
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider"
+              >
+                Email
+              </th>
+            </tr>
+          </thead>
+          <tbody id="search-results" class="divide-y divide-gray-600">
+          <tr class="text-center">
+          <td><div class="my-4 p-2">Sir paudel</div></td>
+          <td><div class="my-4 p-2">paudelronish@gmail.com</div></td>
+        </tr>
+        <tr class="text-center">
+        <td><div class="my-4 p-2">Sir paudel</div></td>
+        <td><div class="my-4 p-2">paudelronish@gmail.com</div></td>
+      </tr>
+      </tbody>
+        </table>
       </div>
-      <div
-      class="bg-green-600 py-2 px-1 rounded-lg cursor-pointer text-[14px] uppercase font-medium"
-      >
-      <a href="/download/csv" download="data.csv">
-    Export data
-    </a>
     </div>
-    </div>
-    <div class="text-white flex px-[1.7rem] w-full underline">
-      <div class="w-[42%] py-1 text-xs font-medium uppercase tracking-wider">
-        S.N
-      </div>
-      <div
-        class="py-1 text-center text-xs font-medium uppercase tracking-wider"
-      >
-        Todo-List
-      </div>
-    </div>
-
-    <div id="todo-data" class="mb-2 overflow-y-auto max-h-[150px]" style="color-scheme:dark;">
-    
-    </div>
-    <div id="search-results" class="mb-2 bg-gray-800"></div>
-
-  </div>
 `,
       }),
     })
