@@ -33,9 +33,7 @@ export function NewComponent(props: {
           <span class="htmx-indicator" id="loading">
           <img src="/loader.gif" alt="Loading..." class="m-auto h-10" />
         </span>
-
               {{ .children }}
-  
           </div>
       `;
 
