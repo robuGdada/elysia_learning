@@ -63,6 +63,10 @@ const app = new Elysia()
   .get("/id/:id", ({ params: { id } }) => {
     return id;
   })
+  .state("counter", 0)
+  .get("/error", ({ store }) => store.counter)
+
+  // .get("/", ({ store }) => store.counter)
   .post("/", () => "hi")
   .route("M-SEARCH", "/", () => "connect")
   .listen(3000);
