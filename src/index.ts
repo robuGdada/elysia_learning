@@ -68,7 +68,6 @@ const app = new Elysia()
 
   // .get("/", ({ store }) => store.counter)
   .post("/", () => "hi")
-  .route("M-SEARCH", "/", () => "connect")
   .listen(3000);
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
