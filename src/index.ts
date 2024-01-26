@@ -60,8 +60,13 @@ const app = new Elysia()
       }),
     })
   )
-  .get("/id/:id", ({ params: { id } }) => {
-    return id;
+  .get("/id", () => {
+    const users = [
+      { id: 1, name: "ronish" },
+      { id: 2, name: "paudel" },
+    ];
+    return `<h1 class="text-2xl font-bold ">Users</h1>
+  <ul>${users.map((user) => `<li>Name : ${user.name}</li>`).join(" ")}`;
   })
   .state("counter", 0)
   .get("/error", ({ store }) => store.counter)
